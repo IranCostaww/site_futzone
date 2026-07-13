@@ -551,44 +551,63 @@ PÁGINA PRODUTOS
 
 @media (max-width:768px){
 
-    h1{
-
-        font-size:34px;
-        line-height:40px;
-
-    }
-
-    h2{
-
-        font-size:28px;
-        line-height:34px;
-
-    }
-
     #header{
 
         padding:15px;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+
+    }
+
+    .logo{
+
+        width:80px;
 
     }
 
     #navbar{
 
-        gap:10px;
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px;
 
     }
 
     #navbar li{
 
-        padding:8px;
+        padding:0;
+
+    }
+
+    #navbar a{
+
+        font-size:15px;
+        padding:8px 10px;
 
     }
 
     #hero{
 
-        height:70vh;
-        padding:20px;
+        padding:25px;
+        background-position:65%;
+        height:75vh;
 
-        background-position:center;
+    }
+
+    #hero h1{
+
+        font-size:38px;
+        line-height:45px;
+
+    }
+
+    #hero h2{
+
+        font-size:30px;
+        line-height:35px;
 
     }
 
@@ -596,25 +615,6 @@ PÁGINA PRODUTOS
 
         width:220px;
         height:110px;
-        font-size:16px;
-
-    }
-
-    #loja{
-
-        padding:20px;
-
-    }
-
-    .catalogo{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .imagem{
-
-        height:220px;
 
     }
 
