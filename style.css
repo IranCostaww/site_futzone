@@ -50,7 +50,7 @@ body{
 }
 
 .logo_wpp{
-    width:50px;
+    width:40px;
     height: auto;
 }
 
@@ -500,6 +500,7 @@ PÁGINA PRODUTOS
     background:#d4af37;
     color:black;
 
+
 }
 /* =====================================
    TABLETS (até 992px)
@@ -589,7 +590,7 @@ PÁGINA PRODUTOS
     #hero{
         height: 70vh;
         padding: 20px;
-        background-position: center;
+        background-position: 75% center;
     }
 
     #hero h1{
@@ -668,4 +669,381 @@ PÁGINA PRODUTOS
 
     }
 
+}
+/* ==========================================
+            VITRINES
+========================================== */
+
+.vitrine{
+
+    padding:60px 80px;
+    background:#f8f8f8;
+
+}
+
+.titulo-vitrine{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.titulo-vitrine h2{
+
+    font-size:32px;
+
+    color:#000;
+
+}
+
+/* ==========================================
+                SETAS
+========================================== */
+
+.setas{
+
+    display:flex;
+    gap:10px;
+
+}
+
+.setas button{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:black;
+
+    color:#d4af37;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.setas button:hover{
+
+    background:#d4af37;
+
+    color:black;
+
+}
+
+/* ==========================================
+            CARROSSEL
+========================================== */
+
+.carrossel{
+
+    overflow:hidden;
+
+}
+
+.lista-produtos{
+
+    display:flex;
+
+    gap:25px;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+    scrollbar-width:none;
+
+}
+
+.lista-produtos::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/* ==========================================
+                CARD
+========================================== */
+
+.produto{
+
+    min-width:260px;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    flex-shrink:0;
+
+}
+
+.produto:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.produto img{
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:contain;
+
+    transition:.4s;
+
+}
+
+.produto:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.produto h4{
+
+    margin-top:20px;
+
+    min-height:55px;
+
+    font-size:18px;
+
+}
+
+.produto p{
+
+    color:#d4af37;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    margin:20px 0;
+
+}
+
+.produto button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:black;
+
+    color:#d4af37;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.produto button:hover{
+
+    background:#d4af37;
+
+    color:black;
+
+}
+
+/* ==========================================
+        RESPONSIVO
+========================================== */
+
+@media(max-width:768px){
+
+    .vitrine{
+
+        padding:30px 20px;
+
+    }
+
+    .titulo-vitrine h2{
+
+        font-size:24px;
+
+    }
+
+    .produto{
+
+        min-width:200px;
+
+    }
+
+    .produto img{
+
+        height:180px;
+
+    }
+
+}
+/* ==========================
+        FOOTER
+========================== */
+
+#footer{
+
+    background:#000;
+
+    color:white;
+
+    padding:20px 80px 10px;
+
+}
+
+.footer-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+}
+
+.footer-item{
+
+    text-align:center;
+
+}
+
+.footer-item h4{
+
+    color:#d4af37;
+
+    margin-bottom:8px;
+
+    font-size:18px;
+
+}
+
+.footer-item p{
+
+    margin:0;
+
+    color:#ddd;
+
+    font-size:14px;
+
+}
+
+.footer-item .logo{
+
+    width:90px;
+
+}
+
+.logo_insta{
+
+    width:35px;
+
+    transition:.3s;
+
+}
+
+.logo_insta:hover{
+
+    transform:scale(1.1);
+
+}
+
+#footer hr{
+
+    border:none;
+
+    height:1px;
+
+    background:#333;
+
+    margin:20px 0 10px;
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    color:#aaa;
+
+    font-size:14px;
+
+}
+
+.copyright strong{
+
+    color:#d4af37;
+
+}
+
+/* A imagem precisa ser relativa para posicionar o selo */
+.imagem{
+    position: relative;
+}
+
+/* Faixa de esgotado */
+.selo-esgotado{
+
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    background: #d60000;
+
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    z-index: 10;
+}
+
+/* Botão esgotado */
+
+.esgotado{
+
+    background: #888;
+
+    color: white;
+
+    cursor: not-allowed;
+}
+
+.esgotado:hover{
+
+    background: #888;
 }

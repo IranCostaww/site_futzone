@@ -19,224 +19,19 @@ no HTML.
 ===========================================================
 */
 
-const produtos = [
 
-    // ===============================
-    // NACIONAIS
-    // ===============================
 
-    {
-        nome: "Flamengo Home 25/26",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/flamengo.webp"
-    },
+// comprar//
 
-    {
-        nome: "Flamengo Away 25/26",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/flamengoaway.webp"
-    },
+function comprar(nomeCamisa){
 
-    {
-        nome: "Corinthians Home 25/26",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/corinthias.jpg"
-    },
+    const mensagem = `Olá! Vim pelo site da Futzone e tenho interesse na camisa ${nomeCamisa}.`;
 
-    {
-        nome: "Palmeiras 26/27",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/palmeiras26.jpg"
-    },
+    const url = `https://wa.me/557398625840?text=${encodeURIComponent(mensagem)}`;
 
-    {
-        nome: "São Paulo Home 25/26",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/sp25.webp"
-    },
+    window.open(url, "_blank");
 
-    {
-        nome: "Vasco 26",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/vasco26.jpg"
-    },
-
-    {
-        nome: "Cruzeiro Home 25/26",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/cruzeiro25.webp"
-    },
-
-    {
-        nome: "Atlético Mineiro Home",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/atleticominerio25.webp"
-    },
-
-    {
-        nome: "Grêmio Home",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/gremio25.webp"
-    },
-
-    {
-        nome: "Internacional Home",
-        preco: 269.90,
-        categoria: "Nacional",
-        imagem: "imagens/internacional25.webp"
-    },
-
-    // ===============================
-    // INTERNACIONAIS
-    // ===============================
-
-    {
-        nome: "Real Madrid Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/real.jpg"
-    },
-
-    {
-        nome: "Barcelona Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/barcelona.jpg"
-    },
-
-    {
-        nome: "Manchester City Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/mancity25.webp"
-    },
-
-    {
-        nome: "Manchester United Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/manunited25.webp"
-    },
-
-    {
-        nome: "Liverpool Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/liverpool25.webp"
-    },
-
-    {
-        nome: "Ajax Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/ajax.jpg"
-    },
-
-    {
-        nome: "Arsenal Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/arsenal26.webp"
-    },
-
-    {
-        nome: "Bayern Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/bayern26.webp"
-    },
-
-    {
-        nome: "Borussia Dortmund Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/bvb26.webp"
-    },
-
-    {
-        nome: "PSG 18 Neymar",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/psg18.webp"
-    },
-
-    {
-        nome: "Juventus Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/jv26.webp"
-    },
-
-    {
-        nome: "Milan Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/milan26.webp"
-    },
-
-    {
-        nome: "Inter de Milão Home",
-        preco: 289.90,
-        categoria: "Internacional",
-        imagem: "imagens/milao26.webp"
-    },
-
-    // ===============================
-    // SELEÇÕES
-    // ===============================
-
-    {
-        nome: "Brasil 2026",
-        preco: 249.90,
-        categoria: "Seleção",
-        imagem: "imagens/brasil.jpg"
-    },
-
-    {
-        nome: "Argentina 2026",
-        preco: 249.90,
-        categoria: "Seleção",
-        imagem: "imagens/argentina26.webp"
-    },
-
-    {
-        nome: "Portugal 2026",
-        preco: 249.90,
-        categoria: "Seleção",
-        imagem: "imagens/portugal26.webp"
-    },
-
-    {
-        nome: "Alemanha 2026",
-        preco: 249.90,
-        categoria: "Seleção",
-        imagem: "imagens/alemanha26.webp"
-    },
-
-    {
-        nome: "Espanha 2026",
-        preco: 249.90,
-        categoria: "Seleção",
-        imagem: "imagens/espanha26.webp"
-    },
-
-    {
-        nome: "França 2 2026",
-        preco: 249.90,
-        categoria: "Seleção",
-        imagem: "imagens/frança2.jpg"
-    }
-
-];
+}
 
 /* ===========================================
       PEGANDO ELEMENTOS DO HTML
@@ -266,30 +61,43 @@ function mostrarProdutos(lista){
 
         catalogo.innerHTML += `
 
-        <div class="camisa">
+            <div class="produto">
+            
+                <div class="imagem">
 
-            <div class="imagem">
+                    ${
+                        produto.estoque === false
+                        ?
+                        `<span class="selo-esgotado">
+                            ESGOTADO
+                        </span>`
+                        :
+                        ""
+                    }
 
-                <img src="${produto.imagem}" alt="${produto.nome}">
+                    <img src="${produto.imagem}" alt="${produto.nome}">
+
+                </div>
+
+                <h4>${produto.nome}</h4>
+
+                <p>
+                    R$ ${produto.preco.toFixed(2).replace(".",",")}
+                </p>
+
+            ${
+                produto.estoque !== false
+                ?
+                `<button onclick="comprar('${produto.nome}')">
+                    Comprar
+                </button>`
+                :
+                `<button class="esgotado" disabled>
+                    Esgotado
+                </button>`
+            }
 
             </div>
-
-            <h4>${produto.nome}</h4>
-
-            <span>
-
-                R$ ${produto.preco.toFixed(2).replace(".",",")}
-
-            </span>
-
-            <button>
-
-                Comprar
-
-            </button>
-
-        </div>
-
         `;
 
     });
