@@ -552,7 +552,7 @@ PÁGINA PRODUTOS
 
 @media (max-width: 768px) {
     /* ==========================================
-       HEADER E NAVBAR
+       HEADER E NAVBAR (Contato ajustado sem quebrar)
     ========================================== */
     #header {
         flex-direction: row;
@@ -563,38 +563,38 @@ PÁGINA PRODUTOS
     }
 
     .logo {
-        width: 60px; /* Logo um pouco menor para ganhar espaço */
+        width: 60px;
     }
 
     #navbar {
+        order: 3; /* Força o menu a ficar na linha de baixo de forma organizada */
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 12px;
         margin-top: 15px;
     }
 
     #navbar a {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     /* ==========================================
-       HERO (NEYMAR)
+       HERO (NEYMAR - Texto abaixo do pescoço, na camisa!)
     ========================================== */
     #hero {
         height: 65vh; 
-        /* padding: topo, direita, baixo, esquerda */
-        padding: 20px 20px 60px 20px; 
-        background-position: 70% top; /* Sobe um pouco a imagem de fundo */
+        padding: 20px 20px 60px 20px; /* Mais espaço embaixo para empurrar o botão */
+        background-position: 70% top; /* Foca no topo da cabeça dele para subir a camisa */
         display: flex;
         flex-direction: column;
-        justify-content: flex-end; /* O SEGREDO: Empurra o texto para a parte de baixo! */
+        justify-content: flex-end; /* Empurra todo o texto para a parte de baixo da foto */
     }
 
     #hero h4, #hero h1, #hero h2, #hero p {
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Sombra para destacar em cima da camisa amarela */
     }
 
     #hero h4 {
@@ -627,7 +627,7 @@ PÁGINA PRODUTOS
     }
 
     /* ==========================================
-       PRODUTOS LADO A LADO
+       PRODUTOS LADO A LADO NO CELULAR
     ========================================== */
     .catalogo {
         grid-template-columns: repeat(2, 1fr);
@@ -660,7 +660,7 @@ PÁGINA PRODUTOS
     }
 
     /* ==========================================
-       FOOTER
+       FOOTER (RODAPÉ)
     ========================================== */
     #footer {
         padding: 30px 20px 15px;
