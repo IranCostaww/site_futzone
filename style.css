@@ -550,125 +550,122 @@ PÁGINA PRODUTOS
    CELULARES (até 768px)
 ===================================== */
 
-@media (max-width: 768px){
-
-    /* Header */
-    #header{
-        padding: 10px 15px;
-        flex-direction: column;
-        gap: 10px;
+@media (max-width: 768px) {
+    #header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
     }
 
-    /* Logo menor */
-    .logo{
-        width: 70px;
+    .logo {
+        width: 60px; /* Logo um pouco menor para ganhar espaço */
     }
 
-    /* Menu */
-    #navbar{
+    /* Força o menu para a linha de baixo, ocupando 100% da largura */
+    #navbar {
+        width: 100%;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 15px;
+        margin-top: 15px;
     }
 
-    #navbar li{
-        padding: 0;
+    #navbar a {
+        font-size: 14px;
     }
 
-    #navbar a{
+    #footer {
+        padding: 30px 20px 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 25px;
+    }
+    /* Ajuste da altura e posição da foto */
+    #hero {
+        height: 65vh; /* Levemente menor para mostrar um pedaço da loja logo de cara */
+        padding: 30px 20px;
+        background-position: 70% center; /* Tenta focar mais no rosto/camisa */
+        justify-content: center; /* Centraliza o texto verticalmente */
+    }
+
+    /* O SEGREDO: Sombra no texto para destacar em cima da foto */
+    #hero h4, #hero h1, #hero h2, #hero p {
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Ajuste fino dos tamanhos e espaçamentos */
+    #hero h4 {
+        font-size: 16px;
+        padding-bottom: 5px; /* Aproxima do título principal */
+    }
+
+    #hero h1 {
+        font-size: 32px;
+        line-height: 1.1;
+    }
+
+    #hero h2 {
+        font-size: 32px;
+        line-height: 1.1;
+        margin-bottom: 10px;
+    }
+
+    #hero p {
         font-size: 15px;
+        margin-top: 5px;
+        margin-bottom: 25px;
+        color: #f5f5f5; /* Branco mais suave para leitura */
     }
 
-    /* Remove a barrinha embaixo no celular */
-    #navbar li.active::after,
-    #navbar a:hover::after{
-        display: none;
-    }
-
-    /* Hero */
-    #hero{
-        height: 70vh;
-        padding: 20px;
-        background-position: 75% center;
-    }
-
-    #hero h1{
-        font-size: 34px;
-        line-height: 40px;
-    }
-
-    #hero h2{
-        font-size: 28px;
-        line-height: 34px;
-    }
-
-    #hero h4{
-        font-size: 18px;
-    }
-
-    #hero p{
+    /* Ajuste do botão (como é uma imagem, precisamos cuidar da proporção) */
+    #hero button {
+        width: 180px;
+        height: 65px; /* Reduz a altura para não ficar esticado no celular */
         font-size: 16px;
     }
-
-    #hero button{
-        width: 200px;
-        height: 90px;
-        font-size: 16px;
-    }
-
 }
+
 
 /* =====================================
    CELULARES PEQUENOS
 ===================================== */
 
-@media (max-width:480px){
+@media (max-width: 480px) {
 
-    #header{
-
-        padding:10px;
-
+    .camisa span, .produto p {
+        font-size: 20px; /* Reduz um pouco o tamanho do preço no celular */
+        margin: 10px 0;
     }
 
-    .logo{
-
-        width:80px;
-
+    .camisa button, .produto button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    #header {
+        padding: 10px 15px;
     }
 
-    #navbar{
-
-        display:flex;
-        flex-direction:column;
-        gap:10px;
-
+    /* Mantenha o menu horizontal e em linha */
+    #navbar {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
     }
 
-    h1{
-
-        font-size:28px;
-
+    h1 {
+        font-size: 24px; /* Ajuste para não quebrar em telas minúsculas */
     }
 
-    h2{
-
-        font-size:24px;
-
+    h2 {
+        font-size: 20px;
     }
-
-    .camisa{
-
-        padding:12px;
-
-    }
-
-    .camisa span{
-
-        font-size:20px;
-
-    }
-
 }
 /* ==========================================
             VITRINES
