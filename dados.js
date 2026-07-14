@@ -250,8 +250,7 @@ function comprar(nomeCamisa){
     const mensagem =
     `Olá! Vim pelo site da Futzone e tenho interesse na camisa ${nomeCamisa}.`;
 
-    const url =
-    `https://wa.me/5573988625840?text=${encodeURIComponent(mensagem)}`;
+   const url = `https://wa.me/557398625840?text=${encodeURIComponent(mensagem)}`;
 
     window.open(url, "_blank");
 
