@@ -585,9 +585,12 @@ PÁGINA PRODUTOS
     ========================================== */
     #hero {
         height: 65vh; 
-        padding: 30px 20px;
-        background-position: 70% center; 
-        justify-content: center; 
+        /* padding: topo, direita, baixo, esquerda */
+        padding: 20px 20px 60px 20px; 
+        background-position: 70% top; /* Sobe um pouco a imagem de fundo */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; /* O SEGREDO: Empurra o texto para a parte de baixo! */
     }
 
     #hero h4, #hero h1, #hero h2, #hero p {
