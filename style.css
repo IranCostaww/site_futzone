@@ -120,19 +120,23 @@ body{
 #hero h4{
     padding-bottom: 15px;
     color: #d4af37; 
- }
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
 
 #hero h1{
-     color: #f7d046; 
- }
+    color: #f7d046; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
 
- #hero h2{
-    color:white;
- }
- #hero p{
+#hero h2{
     color: white;
-    
- }
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+#hero p{
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Sombra um pouco menor para o texto pequeno */
+}
  /*#hero button{
     background-image: url("/imagens/butao.png");
     background-color: transparent;
@@ -630,35 +634,43 @@ PÁGINA PRODUTOS
        PRODUTOS LADO A LADO NO CELULAR
     ========================================== */
     .catalogo {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
     .produto {
-        min-width: 150px; 
         padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Espalha os itens dentro do card */
+        height: 100%; /* Faz os cards da mesma linha terem a mesma altura */
     }
 
     .produto img {
-        height: 130px; 
+        width: 100%;
+        height: 140px; /* Altura um pouco maior para dar respiro */
+        object-fit: contain; /* Garante que a camisa apareça inteira sem achatar */
+        margin-bottom: 10px;
     }
 
     .produto h4 {
         font-size: 14px; 
-        min-height: 40px;
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        flex-grow: 1; /* O pulo do gato: o título ocupa o espaço que sobrar e empurra o preço pra baixo */
     }
 
     .produto p {
-        font-size: 18px; 
-        margin: 10px 0;
+        font-size: 16px; /* Tamanho ligeiramente reduzido para não encavalar em 2 colunas */
+        margin: 5px 0 15px 0;
     }
 
     .produto button {
+        width: 100%; /* Deixa o botão ocupando a largura total do card, fica mais fácil de clicar */
         padding: 10px;
-        font-size: 13px;
+        font-size: 14px;
     }
-
     /* ==========================================
        FOOTER (RODAPÉ)
     ========================================== */
