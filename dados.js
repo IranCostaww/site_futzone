@@ -1,257 +1,112 @@
-const produtos = [
 
-    // ===============================
-    // NACIONAIS
-    // ===============================
+function criarModalCheckout(){
 
-    {
-        nome: "Flamengo 25/26  | Versão Jogador",
-        preco: 180.00,
-        categoria: "Nacional",
-        imagem: "imagens/flamengo26_jogador.jpg"
-    },
+    if (document.getElementById("modal-checkout")) return;
 
-    {
-        nome: "Flamengo 25/26  | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/flamengo26_torcedor.webp"
-    },
+    const estilo = document.createElement("style");
+    estilo.textContent = `
+        #modal-checkout {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; font-family: "Figtree", sans-serif;
+        }
+        #modal-checkout .caixa {
+            background: #111; color: white; border: 1px solid #d4af37;
+            border-radius: 10px; padding: 24px; width: 90%; max-width: 380px;
+            text-align: center;
+        }
+        #modal-checkout h3 { color: #f7d046; margin: 0 0 14px; }
+        #modal-checkout input {
+            width: 100%; padding: 10px; border-radius: 6px; border: none;
+            margin-bottom: 12px; box-sizing: border-box; font-size: 15px;
+        }
+        #modal-checkout button {
+            width: 100%; padding: 10px; border-radius: 6px; border: none;
+            background: #d4af37; color: black; font-weight: bold;
+            cursor: pointer; margin-top: 6px;
+        }
+        #modal-checkout .cancelar {
+            background: transparent; color: #aaa; margin-top: 10px;
+        }
+        #modal-checkout .resumo { text-align: left; font-size: 14px; margin: 10px 0; }
+        #modal-checkout .erro { color: #ff6b6b; font-size: 13px; margin-top: 6px; }
+    `;
+    document.head.appendChild(estilo);
 
-    {
-        nome: "Corinthians 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/corinthias.jpg",
-        estoque:false
-    },
+    const modal = document.createElement("div");
+    modal.id = "modal-checkout";
+    modal.innerHTML = `
+        <div class="caixa">
+            <h3>Finalizar compra</h3>
+            <div class="resumo" id="texto-resumo"></div>
+            <input type="text" id="input-nome" placeholder="Seu nome completo">
+            <input type="text" id="input-cep" placeholder="CEP">
+            <input type="text" id="input-rua" placeholder="Rua/Avenida e número">
+            <input type="text" id="input-complemento" placeholder="Complemento (opcional)">
+            <input type="text" id="input-bairro" placeholder="Bairro">
+            <input type="text" id="input-cidade" placeholder="Cidade/UF">
+            <button id="btn-pagar">Finalizar no WhatsApp</button>
+            <div class="erro" id="texto-erro"></div>
+            <button class="cancelar" id="btn-cancelar">Cancelar</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
 
-    {
-        nome: "Palmeiras 26/27 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/palmeiras26.jpg"
-    },
+function fecharModalCheckout(){
+    const modal = document.getElementById("modal-checkout");
+    if (modal) modal.remove();
+}
 
-    {
-        nome: "São Paulo 25/26 | Versão Jogador",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/sp25.webp",
-        estoque:false
-    },
+const NUMERO_WHATSAPP = "557398625840";
 
-    {
-        nome: "Vasco 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/vasco26.jpg"
-    },
+function comprar(nomeCamisa, preco){
 
-    {
-        nome: "Bahia 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/bahia.jpg"
-    },
+    criarModalCheckout();
 
-    {
-        nome: "Atlético Mineiro | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/atleticominerio25.webp",
-        estoque:false
-    },
+    const btnPagar = document.getElementById("btn-pagar");
+    const btnCancelar = document.getElementById("btn-cancelar");
+    const textoResumo = document.getElementById("texto-resumo");
+    const textoErro = document.getElementById("texto-erro");
+    const inputNome = document.getElementById("input-nome");
+    const inputCep = document.getElementById("input-cep");
+    const inputRua = document.getElementById("input-rua");
+    const inputComplemento = document.getElementById("input-complemento");
+    const inputBairro = document.getElementById("input-bairro");
+    const inputCidade = document.getElementById("input-cidade");
 
-    {
-        nome: "Grêmio 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/gremio25.webp",
-        estoque:false
-    },
+    textoResumo.innerHTML = `
+        Produto: ${nomeCamisa}<br>
+        <strong>Total: R$ ${preco.toFixed(2).replace(".", ",")}</strong>
+    `;
 
-    {
-        nome: "Internacional 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Nacional",
-        imagem: "imagens/internacional25.webp",
-        estoque:false
-    },
+    btnCancelar.onclick = fecharModalCheckout;
 
-    // ===============================
-    // INTERNACIONAIS
-    // ===============================
+    btnPagar.onclick = () => {
+        textoErro.textContent = "";
 
-    {
-        nome: "Real Madrid 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/real.jpg"
-    },
+        const nome = inputNome.value.trim();
+        const cep = inputCep.value.trim();
+        const rua = inputRua.value.trim();
+        const complemento = inputComplemento.value.trim();
+        const bairro = inputBairro.value.trim();
+        const cidade = inputCidade.value.trim();
 
-    {
-        nome: "Barcelona 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/barcelona.jpg"
-    },
+        if (!nome || !rua || !bairro) {
+            textoErro.textContent = "Preencha nome, endereço e bairro.";
+            return;
+        }
 
-    {
-        nome: "Manchester City 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/mancity25.webp",
-        estoque:false
-    },
+        const mensagem =
+            `Olá! Quero comprar a camisa ${nomeCamisa}.\n` +
+            `Nome: ${nome}\n` +
+            `Endereço: ${rua}${complemento ? ", " + complemento : ""} - ${bairro}${cidade ? " - " + cidade : ""}\n` +
+            (cep ? `CEP: ${cep}\n` : "") +
+            `Total: R$ ${preco.toFixed(2).replace(".", ",")}`;
 
-    {
-        nome: "Manchester United 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/manunited25.webp",
-        estoque:false
-    },
+        const linkWhats = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+        window.open(linkWhats, "_blank");
 
-    {
-        nome: "Liverpool 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/liverpool25.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Ajax 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/ajax.jpg"
-    },
-
-    {
-        nome: "Arsenal 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/arsenal26.webp",
-        estoque: false
-    },
-
-    {
-        nome: "Bayern 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/bayern26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Borussia Dortmund 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/bvb26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "PSG 18 Neymar",
-        preco: 180.00,
-        categoria: "Internacional",
-        imagem: "imagens/psg18.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Juventus 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/jv26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Milan 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/milan26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Inter de Milão 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Internacional",
-        imagem: "imagens/milao26.webp",
-        estoque:false
-    },
-
-    // ===============================
-    // SELEÇÕES
-    // ===============================
-
-
-    {
-        nome:"Brasil 1998 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/Brasil98.jpg"
-    },
-
-    {
-        nome: "Brasil 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/brasil.jpg"
-    },
-
-    {
-        nome: "Argentina 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/argentina26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Portugal 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/portugal26.webp",
-        estoque: false
-    },
-
-    {
-        nome: "Alemanha 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/alemanha26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "Espanha 25/26 | Versão Jogador",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/espanha26.webp",
-        estoque:false
-    },
-
-    {
-        nome: "França 2 25/26 | Versão Torcedor",
-        preco: 140.00,
-        categoria: "Seleção",
-        imagem: "imagens/frança2.jpg",
-        estoque:false
-    }
-
-];
-
-function comprar(nomeCamisa){
-
-    const mensagem =
-    `Olá! Vim pelo site da Futzone e tenho interesse na camisa ${nomeCamisa}.`;
-
-   const url = `https://wa.me/557398625840?text=${encodeURIComponent(mensagem)}`;
-
-    window.open(url, "_blank");
-
+        fecharModalCheckout();
+    };
 }
