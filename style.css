@@ -427,10 +427,11 @@ PÁGINA PRODUTOS
 
 .preco-wrapper{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    margin: 6px 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+    margin: 15px 0;
 }
 
 .preco-original{
@@ -442,12 +443,13 @@ PÁGINA PRODUTOS
 .preco-desconto{
     color: #d4af37;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
-.preco-normal{
+.produto p.preco-normal{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
+    margin: 15px 0;
 }
 
 .imagem img{
@@ -848,6 +850,12 @@ PÁGINA PRODUTOS
 
     flex-shrink:0;
 
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
 }
 
 .produto:hover{
@@ -1089,6 +1097,33 @@ PÁGINA PRODUTOS
     z-index: 10;
 }
 
+.selo-bf{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #000;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.tamanho-unico{
+    display: inline-block;
+    align-self: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #111;
+    background: #f7f3e3;
+    border: 1px solid #d4af37;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
 /* Botão esgotado */
 
 .esgotado{
@@ -1161,6 +1196,21 @@ PÁGINA PRODUTOS
 
     .catalogo .produto .preco-original {
         font-size: 12px;
+    }
+
+    .selo-bf,
+    .selo-esgotado {
+        font-size: 8.5px;
+        padding: 3px 5px;
+        top: 6px;
+    }
+
+    .selo-esgotado {
+        left: 2px;
+    }
+
+    .selo-bf {
+        right: 2px;
     }
 }
 

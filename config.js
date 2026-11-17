@@ -1,1 +1,1 @@
-const API_URL = "https://futzone-api.onrender.com";
+const PRODUTOS_URL = "produtos.json";

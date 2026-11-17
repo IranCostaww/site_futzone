@@ -17,9 +17,11 @@ function mostrarProdutos(lista){
             <div class="produto">
                 <div class="imagem">
                     ${produto.estoque === false ? `<span class="selo-esgotado">ESGOTADO</span>` : ""}
+                    <span class="selo-bf">Black Friday</span>
                     <img src="${produto.imagem}" alt="${produto.nome}">
                 </div>
                 <h4>${produto.nome}</h4>
+                ${produto.tamanho ? `<span class="tamanho-unico">Tamanho único: ${produto.tamanho}</span>` : ""}
                 ${
                     produto.precoOriginal
                     ? `<div class="preco-wrapper">
@@ -30,7 +32,7 @@ function mostrarProdutos(lista){
                 }
                 ${
                     produto.estoque !== false
-                    ? `<button onclick="comprar('${produto.nome}', ${produto.preco})">Comprar</button>`
+                    ? `<button onclick="comprar('${produto.tamanho ? `${produto.nome} (Tamanho único: ${produto.tamanho})` : produto.nome}', ${produto.preco})">Comprar</button>`
                     : `<button class="esgotado" disabled>Esgotado</button>`
                 }
             </div>
@@ -90,7 +92,7 @@ function filtrarProdutos(){
     mostrarProdutos(resultado);
 }
 
-fetch(`${API_URL}/api/produtos`)
+fetch(PRODUTOS_URL, { cache: "no-cache" })
     .then(res => res.json())
     .then(dados => {
         produtos = dados;

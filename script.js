@@ -19,12 +19,24 @@ vitrines.forEach(vitrine => {
 function criarCard(produto){
     return `
     <div class="produto">
-        <img src="${produto.imagem}" alt="${produto.nome}">
+        <div class="imagem">
+            ${produto.estoque === false ? `<span class="selo-esgotado">ESGOTADO</span>` : ""}
+            <span class="selo-bf">Black Friday</span>
+            <img src="${produto.imagem}" alt="${produto.nome}">
+        </div>
         <h4>${produto.nome}</h4>
-        <p>R$ ${produto.preco.toFixed(2).replace(".",",")}</p>
+        ${produto.tamanho ? `<span class="tamanho-unico">Tamanho único: ${produto.tamanho}</span>` : ""}
+        ${
+            produto.precoOriginal
+            ? `<div class="preco-wrapper">
+                <span class="preco-original">R$ ${produto.precoOriginal.toFixed(2).replace(".",",")}</span>
+                <span class="preco-desconto">R$ ${produto.preco.toFixed(2).replace(".",",")}</span>
+               </div>`
+            : `<p class="preco-normal">R$ ${produto.preco.toFixed(2).replace(".",",")}</p>`
+        }
         ${
             produto.estoque !== false
-            ? `<button onclick="comprar('${produto.nome}', ${produto.preco})">Comprar</button>`
+            ? `<button onclick="comprar('${produto.tamanho ? `${produto.nome} (Tamanho único: ${produto.tamanho})` : produto.nome}', ${produto.preco})">Comprar</button>`
             : `<button class="esgotado" disabled>Esgotado</button>`
         }
     </div>
@@ -37,7 +49,7 @@ const listaLancamentos = document.getElementById("lancamentos");
 const listaMaisVendidos = document.getElementById("maisVendidos");
 
 if(listaLancamentos && listaMaisVendidos){
-    fetch(`${API_URL}/api/produtos`)
+    fetch(PRODUTOS_URL, { cache: "no-cache" })
         .then(res => res.json())
         .then(produtos => {
             produtos.slice(0,6).forEach(produto => {
