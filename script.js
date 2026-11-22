@@ -17,6 +17,10 @@ vitrines.forEach(vitrine => {
 });
 
 function criarCard(produto){
+    const infoTamanho = produto.tamanhoInfo
+        ? produto.tamanhoInfo
+        : (produto.tamanho ? `Tamanho único: ${produto.tamanho}` : "");
+
     return `
     <div class="produto">
         <div class="imagem">
@@ -25,7 +29,7 @@ function criarCard(produto){
             <img src="${produto.imagem}" alt="${produto.nome}">
         </div>
         <h4>${produto.nome}</h4>
-        ${produto.tamanho ? `<span class="tamanho-unico">Tamanho único: ${produto.tamanho}</span>` : ""}
+        ${infoTamanho ? `<span class="tamanho-unico">${infoTamanho}</span>` : ""}
         ${
             produto.precoOriginal
             ? `<div class="preco-wrapper">
@@ -36,7 +40,7 @@ function criarCard(produto){
         }
         ${
             produto.estoque !== false
-            ? `<button onclick="comprar('${produto.tamanho ? `${produto.nome} (Tamanho único: ${produto.tamanho})` : produto.nome}', ${produto.preco})">Comprar</button>`
+            ? `<button onclick="comprar('${infoTamanho ? `${produto.nome} (${infoTamanho})` : produto.nome}', ${produto.preco})">Comprar</button>`
             : `<button class="esgotado" disabled>Esgotado</button>`
         }
     </div>

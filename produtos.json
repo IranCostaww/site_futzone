@@ -1,10 +1,11 @@
 [
   {
     "nome": "Camisa Flamengo 25/26 - Jogador",
-    "preco": 120,
+    "preco": 129.9,
     "precoOriginal": 180,
     "categoria": "Nacional",
     "imagem": "imagens/flamengo26_jogador.jpg",
+    "tamanho": "GG",
     "id": 1,
     "estoque": true
   },
@@ -28,12 +29,13 @@
   },
   {
     "nome": "Camisa Palmeiras 26/27 - Torcedor",
-    "preco": 99,
+    "preco": 109.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/palmeiras26.jpg",
+    "tamanhoInfo": "Disponível: G (verde) e M (branca)",
     "id": 4,
-    "estoque": false
+    "estoque": true
   },
   {
     "nome": "Camisa São Paulo 25/26 - Jogador",
@@ -46,10 +48,11 @@
   },
   {
     "nome": "Camisa Vasco da Gama 25/26 - Torcedor",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/vasco26.jpg",
+    "tamanho": "M",
     "id": 6,
     "estoque": true
   },
@@ -60,7 +63,7 @@
     "categoria": "Nacional",
     "imagem": "imagens/bahia.jpg",
     "id": 7,
-    "estoque": true
+    "estoque": false
   },
   {
     "nome": "Camisa Atlético Mineiro 25/26 - Torcedor",
@@ -91,19 +94,21 @@
   },
   {
     "nome": "Camisa Real Madrid 25/26 - Torcedor",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Internacional",
     "imagem": "imagens/real.jpg",
+    "tamanho": "G",
     "id": 11,
     "estoque": true
   },
   {
     "nome": "Camisa Barcelona 25/26 - Torcedor",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Internacional",
     "imagem": "imagens/barcelona.jpg",
+    "tamanho": "G",
     "id": 12,
     "estoque": true
   },
@@ -213,7 +218,7 @@
     "categoria": "Seleção",
     "imagem": "imagens/Brasil98.jpg",
     "id": 24,
-    "estoque": true
+    "estoque": false
   },
   {
     "nome": "Camisa Seleção Brasileira 25/26 - Torcedor",
@@ -262,11 +267,12 @@
   },
   {
     "nome": "Camisa Seleção França 25/26 - Torcedor",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Seleção",
     "imagem": "imagens/franca2.jpg",
-    "estoque": false,
+    "tamanho": "G",
+    "estoque": true,
     "id": 30
   },
   {
@@ -289,7 +295,7 @@
   },
   {
     "nome": "Camisa Bahia II Branca 25/26 - Torcedor",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/bahia2branca.jpeg",
@@ -298,7 +304,7 @@
   },
   {
     "nome": "Camisa Corinthians II Branca 25/26 - Torcedor",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/corinthias2.jpeg",
@@ -316,7 +322,7 @@
   },
   {
     "nome": "Camisa Barcelona 26/27 - Edição Especial",
-    "preco": 110,
+    "preco": 114.9,
     "categoria": "Internacional",
     "imagem": "imagens/barcelona-roxa.jpg",
     "tamanho": "M",
@@ -325,15 +331,16 @@
   },
   {
     "nome": "Camisa Barcelona 26/27 - Torcedor",
-    "preco": 120,
+    "preco": 114.9,
     "categoria": "Internacional",
     "imagem": "imagens/barcelona-normal.jpg",
+    "tamanho": "M",
     "id": 38,
     "estoque": true
   },
   {
     "nome": "Camisa Bahia II 26/27",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/bahia.webp",
@@ -342,7 +349,7 @@
   },
   {
     "nome": "Camisa Flamengo 26/27 Fora",
-    "preco": 99,
+    "preco": 109.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/flamengo_Fora.webp",
@@ -351,10 +358,11 @@
   },
   {
     "nome": "Camisa São Paulo 25/26 Third",
-    "preco": 99,
+    "preco": 99.9,
     "precoOriginal": 140,
     "categoria": "Nacional",
     "imagem": "imagens/spthird.webp",
+    "tamanho": "G",
     "id": 41,
     "estoque": true
   },
@@ -374,11 +382,11 @@
     "categoria": "Internacional",
     "imagem": "imagens/messi2015.webp",
     "id": 43,
-    "estoque": true
+    "estoque": false
   },
   {
     "nome": "Barcelona Retrô 2015 Neymar Jr 11",
-    "preco": 160,
+    "preco": 179.9,
     "precoOriginal": 220,
     "categoria": "Internacional",
     "imagem": "imagens/nj2015.webp",
@@ -387,10 +395,11 @@
   },
   {
     "nome": "Man United Retrô 2008 Ronaldo 7/ Patch Champions",
-    "preco": 180,
+    "preco": 199.9,
     "precoOriginal": 240,
     "categoria": "Internacional",
     "imagem": "imagens/cr7manunited.webp",
+    "tamanho": "G",
     "id": 45,
     "estoque": true
   }
